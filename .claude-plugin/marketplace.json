@@ -1,0 +1,14 @@
+{
+  "name": "oblique-skills",
+  "owner": {
+    "name": "Oblique"
+  },
+  "plugins": [
+    {
+      "name": "oblique-cowork",
+      "source": "./oblique-cowork",
+      "description": "Oblique's full suite of Cowork skills — performance reports, proposals, content ideation, briefs, creative strategy, Meta/Google ads analysis, competitor intelligence, influencer shortlisting, media planning, decision council, frameworks, and daily workflows.",
+      "version": "0.3.0"
+    }
+  ]
+}

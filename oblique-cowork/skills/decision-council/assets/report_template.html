@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Decision Council — {{QUESTION_SHORT}}</title>
+<style>
+  :root {
+    --ink: #1C1A1D;
+    --ink-light: #2A272B;
+    --ink-lighter: #3A373B;
+    --lime: #E2F075;
+    --lime-dim: rgba(226, 240, 117, 0.15);
+    --white: #FFFFFF;
+    --white-60: rgba(255,255,255,0.6);
+    --white-40: rgba(255,255,255,0.4);
+    --white-20: rgba(255,255,255,0.2);
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--ink);
+    color: var(--white);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    padding: 0;
+    min-height: 100vh;
+  }
+
+  /* ── Header ── */
+  .header {
+    padding: 48px 40px 32px;
+    border-bottom: 1px solid var(--white-20);
+  }
+  .header-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--lime);
+    margin-bottom: 12px;
+  }
+  .header-question {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.3;
+    max-width: 800px;
+  }
+  .header-meta {
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--white-40);
+  }
+
+  /* ── Verdict Banner ── */
+  .verdict-banner {
+    background: var(--lime-dim);
+    border-left: 4px solid var(--lime);
+    margin: 32px 40px;
+    padding: 24px 28px;
+    border-radius: var(--radius-sm);
+  }
+  .verdict-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--lime);
+    margin-bottom: 8px;
+  }
+  .verdict-text {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
+  /* ── Container ── */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px 60px;
+  }
+
+  /* ── Section Headers ── */
+  .section-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--lime);
+    margin: 40px 0 20px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--white-20);
+  }
+
+  /* ── Council Cards Grid ── */
+  .council-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 16px;
+  }
+
+  .council-card {
+    background: var(--ink-light);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: border-color 0.2s;
+    border: 1px solid transparent;
+  }
+  .council-card:hover {
+    border-color: var(--white-20);
+  }
+
+  .card-header {
+    padding: 20px 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .card-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--lime-dim);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .card-name {
+    font-weight: 700;
+    font-size: 15px;
+  }
+  .card-role {
+    font-size: 12px;
+    color: var(--white-40);
+  }
+
+  .card-verdict {
+    padding: 16px 20px 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--lime);
+    line-height: 1.4;
+  }
+
+  .card-bullets {
+    padding: 12px 20px 0;
+    list-style: none;
+  }
+  .card-bullets li {
+    position: relative;
+    padding-left: 16px;
+    font-size: 13px;
+    color: var(--white-60);
+    margin-bottom: 6px;
+    line-height: 1.4;
+  }
+  .card-bullets li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--lime);
+    font-size: 12px;
+  }
+
+  .card-expand {
+    display: block;
+    width: 100%;
+    padding: 14px 20px;
+    margin-top: 12px;
+    background: none;
+    border: none;
+    border-top: 1px solid var(--white-20);
+    color: var(--white-40);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-align: left;
+    transition: color 0.2s;
+  }
+  .card-expand:hover { color: var(--lime); }
+
+  .card-full {
+    display: none;
+    padding: 0 20px 20px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--white-60);
+  }
+  .card-full.open { display: block; }
+  .card-full h3 {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--white);
+    margin: 16px 0 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .card-full p { margin-bottom: 10px; }
+
+  /* ── Peer Review ── */
+  .peer-review-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .peer-item {
+    background: var(--ink-light);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+  }
+  .peer-header {
+    padding: 16px 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.2s;
+  }
+  .peer-header:hover { background: var(--ink-lighter); }
+  .peer-header-name {
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .peer-header-arrow {
+    color: var(--white-40);
+    font-size: 18px;
+    transition: transform 0.2s;
+  }
+  .peer-header-arrow.open { transform: rotate(180deg); }
+  .peer-body {
+    display: none;
+    padding: 0 20px 20px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--white-60);
+  }
+  .peer-body.open { display: block; }
+
+  /* ── Synthesis ── */
+  .synthesis {
+    background: var(--ink-light);
+    border-radius: var(--radius);
+    padding: 28px;
+    line-height: 1.7;
+  }
+  .synthesis h3 {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--lime);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin: 24px 0 10px;
+  }
+  .synthesis h3:first-child { margin-top: 0; }
+  .synthesis p {
+    font-size: 14px;
+    color: var(--white-60);
+    margin-bottom: 10px;
+  }
+  .synthesis .highlight {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  /* ── Next Steps ── */
+  .next-steps {
+    margin-top: 32px;
+  }
+  .step-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--white-20);
+  }
+  .step-item:last-child { border-bottom: none; }
+  .step-number {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--lime);
+    color: var(--ink);
+    font-weight: 800;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .step-text {
+    font-size: 14px;
+    line-height: 1.6;
+    padding-top: 4px;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--white-20);
+    text-align: center;
+    font-size: 12px;
+    color: var(--white-40);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .header { padding: 32px 20px 24px; }
+    .header-question { font-size: 22px; }
+    .verdict-banner { margin: 24px 20px; }
+    .container { padding: 0 20px 40px; }
+    .council-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<div class="header">
+  <div class="header-label">Decision Council</div>
+  <h1 class="header-question">{{QUESTION_FULL}}</h1>
+  <div class="header-meta">{{DATE}} · 5 council members · Peer-reviewed</div>
+</div>
+
+<!-- ── VERDICT ── -->
+<div class="verdict-banner">
+  <div class="verdict-label">Council Verdict</div>
+  <div class="verdict-text">{{VERDICT_TEXT}}</div>
+</div>
+
+<div class="container">
+
+  <!-- ── COUNCIL MEMBERS ── -->
+  <div class="section-title">Council Members</div>
+  <div class="council-grid">
+    {{COUNCIL_CARDS}}
+  </div>
+
+  <!-- ── PEER REVIEW ── -->
+  <div class="section-title">Peer Review</div>
+  <div class="peer-review-list">
+    {{PEER_REVIEWS}}
+  </div>
+
+  <!-- ── CHAIRMAN SYNTHESIS ── -->
+  <div class="section-title">Chairman's Synthesis</div>
+  <div class="synthesis">
+    {{CHAIRMAN_SYNTHESIS}}
+  </div>
+
+  <!-- ── NEXT STEPS ── -->
+  <div class="section-title">Next Steps</div>
+  <div class="next-steps">
+    {{NEXT_STEPS}}
+  </div>
+
+  <div class="footer">
+    Decision Council · Generated by Claude · {{DATE}}
+  </div>
+</div>
+
+<script>
+  // Toggle full opinion on council cards
+  document.querySelectorAll('.card-expand').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const full = btn.previousElementSibling?.classList.contains('card-full')
+        ? btn.previousElementSibling
+        : btn.closest('.council-card').querySelector('.card-full');
+      if (!full) {
+        // Find the .card-full that's a sibling
+        const card = btn.closest('.council-card');
+        const f = card.querySelector('.card-full');
+        if (f) {
+          f.classList.toggle('open');
+          btn.textContent = f.classList.contains('open') ? '▲ Collapse' : '▼ Full Opinion';
+        }
+        return;
+      }
+      full.classList.toggle('open');
+      btn.textContent = full.classList.contains('open') ? '▲ Collapse' : '▼ Full Opinion';
+    });
+  });
+
+  // Toggle peer review items
+  document.querySelectorAll('.peer-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const body = header.nextElementSibling;
+      const arrow = header.querySelector('.peer-header-arrow');
+      body.classList.toggle('open');
+      arrow.classList.toggle('open');
+    });
+  });
+</script>
+</body>
+</html>
