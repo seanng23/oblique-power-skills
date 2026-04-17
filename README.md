@@ -51,7 +51,7 @@ The full suite of Oblique's Cowork skills, packaged for team-wide installation.
 Install directly from this GitHub repo:
 
 ```
-/plugin marketplace add Oblique-Agency/oblique-skills
+/plugin marketplace add seanng23/oblique-power-skills
 /plugin install oblique-cowork@oblique-skills
 ```
 
