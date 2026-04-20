@@ -11,11 +11,11 @@ The team-wide AI toolkit for Oblique — skills plugin + the full Oblique OS pro
 
 ---
 
-# Oblique Cowork Plugin v0.3.0
+# Oblique Cowork Plugin v0.4.0
 
 The full suite of Oblique's Cowork skills, packaged for team-wide installation.
 
-## Skills included (26)
+## Skills included (27)
 
 ### Ads & Performance
 - **meta-ads-agent** — Analyse and optimise Meta (Facebook/Instagram) Ads using live Windsor.ai data; creative fatigue, audience analysis, CPM/CTR diagnosis
@@ -56,6 +56,9 @@ The full suite of Oblique's Cowork skills, packaged for team-wide installation.
 - **xlsx** — Create, edit, or manipulate Excel spreadsheets
 - **pdf** — Create, read, extract, merge, or manipulate PDFs
 - **skill-creator** — Create new skills, modify existing ones, run evals, and benchmark performance
+
+### Image Generation
+- **nano-banana** — Generate 2K images from text prompts using Kie.ai's Nano Banana 2 model (Google Gemini 3 Flash Image); supports custom aspect ratios, batch generation, and auto-save. Requires `KIE_API_KEY` in your environment.
 
 ## Installation
 
