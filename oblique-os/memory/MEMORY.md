@@ -1,0 +1,2 @@
+- [Card lifecycle loops back](project_card_lifecycle_loop.md) — Ready to Post cards surface in originating team's work queue (Social/Performance), not just design/production
+- [Production Sheet](project_production_sheet.md) — Print-friendly HTML via magic link replaces slide decks for on-set shoot references (Phase 4)

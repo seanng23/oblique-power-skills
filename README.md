@@ -1,3 +1,16 @@
+# Oblique Power Skills
+
+The team-wide AI toolkit for Oblique — skills plugin + the full Oblique OS project handoff package.
+
+## What's in this repo
+
+| Folder | What it is |
+|---|---|
+| `oblique-cowork/` | The Cowork skills plugin (26 skills) — install once, use in every session |
+| `oblique-os/` | The Oblique OS build context — CLAUDE.md, PRD, design system, screenshots, planning docs, and session memory |
+
+---
+
 # Oblique Cowork Plugin v0.3.0
 
 The full suite of Oblique's Cowork skills, packaged for team-wide installation.
@@ -77,3 +90,11 @@ Some skills connect to external services. Set these up in Cowork before use:
 - **Gmail** — used by `daily-note`
 - **Windsor.ai** — used by `performance-report` and `meta-ads-agent`
 - **Apify** — used by `competitor-ad-intelligence` and `influencer-shortlisting`
+
+---
+
+# Oblique OS — Build Context
+
+The `oblique-os/` folder contains everything needed to understand and continue building Oblique OS with Claude Code — including the product spec, design system, 30 UI screenshots, phase roadmap, and session memory.
+
+See [`oblique-os/README.md`](oblique-os/README.md) for the full onboarding guide.
