@@ -1,9 +1,9 @@
 {
   "name": "oblique-cowork",
-  "version": "0.4.0",
-  "description": "Oblique's full suite of Cowork skills — performance reports, proposals, content ideation, briefs, creative strategy, Meta/Google ads analysis, competitor intelligence, influencer shortlisting, media planning, decision council, frameworks, daily workflows, and AI image generation.",
+  "version": "0.5.0",
+  "description": "Oblique's full suite of Cowork skills — performance reports, proposals, content ideation, briefs, creative strategy, Meta/Google ads analysis, competitor intelligence, influencer shortlisting, media planning, decision council, frameworks, daily workflows, AI image generation, and production-grade marketing websites.",
   "author": {
     "name": "Oblique"
   },
-  "keywords": ["oblique", "marketing", "agency", "content", "performance", "social", "proposals", "meta-ads", "google-ads"]
+  "keywords": ["oblique", "marketing", "agency", "content", "performance", "social", "proposals", "meta-ads", "google-ads", "websites", "nextjs"]
 }

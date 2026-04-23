@@ -15,7 +15,7 @@ The team-wide AI toolkit for Oblique — skills plugin + the full Oblique OS pro
 
 The full suite of Oblique's Cowork skills, packaged for team-wide installation.
 
-## Skills included (27)
+## Skills included (28)
 
 ### Ads & Performance
 - **meta-ads-agent** — Analyse and optimise Meta (Facebook/Instagram) Ads using live Windsor.ai data; creative fatigue, audience analysis, CPM/CTR diagnosis
@@ -31,13 +31,15 @@ The full suite of Oblique's Cowork skills, packaged for team-wide installation.
 - **content-scripting** — Turn approved content ideas into production-ready scripts and storyboards
 - **copywriting** — Write Oblique-standard copy for any format: landing pages, ads, product descriptions, social posts
 - **influencer-shortlisting** — Research and shortlist influencers and UGC creators via Apify scraping; outputs a formatted Excel shortlist
-- **competitor-ad-intelligence** — Scrape Meta Ad Library, build competitive deck with screenshots and run-duration analysis
 
 ### Client & Business
 - **proposal** — Generate a full Oblique branding proposal from discovery call notes; outputs branded PPTX
 - **client-brief** — Turn onboarding form data into a polished, research-backed Master Client Brief (Word doc)
 - **media-plan** — Build a structured Excel media plan with Oblique's budget allocation rules and campaign structure
 - **wireframe** — Generate a detailed full-page HTML wireframe for any client site
+
+### Websites
+- **marketing-site** — Build production-grade multi-page marketing websites in Next.js 14 + Tailwind, using Oblique's Editorial Modernism aesthetic — with SEO and GEO (Generative Engine Optimisation) baked into the scaffold (canonical URLs, dynamic OG cards, JSON-LD, sitemap, robots, llms.txt). Optional Sanity CMS layer.
 
 ### Thinking & Systems
 - **decision-council** — Convene a 5-persona expert council to deliberate on any strategic decision; outputs an interactive HTML report
