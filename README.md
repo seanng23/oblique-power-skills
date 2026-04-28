@@ -73,13 +73,32 @@ Install directly from this GitHub repo:
 /plugin install oblique-cowork@oblique-skills
 ```
 
-Skills become available in all new sessions immediately. Update anytime with `/plugin update oblique-cowork`.
+Skills become available in all new sessions immediately.
 
 ### Option 2 — Claude desktop app (Cowork mode)
 
 1. Download `oblique-cowork.plugin` (the packaged zip) from Releases
 2. Open Claude desktop → **Settings → Plugins**
 3. Click **Install Plugin** and select the `.plugin` file
+
+## Updating
+
+Plugins do **not** auto-update. Whenever Sean posts a new version in Slack, run both commands:
+
+```
+/plugin marketplace update oblique-skills
+/plugin update oblique-cowork
+```
+
+Then restart Claude Code. New skills (and updates to existing ones) will appear in `/` autocomplete after restart.
+
+**Why both commands?** The first re-fetches the marketplace manifest (so Claude knows a new version exists). The second pulls the actual plugin contents. Skipping the first means `update` thinks you're already on the latest.
+
+**To check what version you have installed:**
+
+```bash
+cat ~/.claude/plugins/cache/*/oblique-cowork/.claude-plugin/plugin.json | grep version
+```
 
 ## Vault required
 
